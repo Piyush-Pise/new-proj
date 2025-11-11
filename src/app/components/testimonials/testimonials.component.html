@@ -1,0 +1,66 @@
+<section id="testimonials" class="testimonials section">
+  <div class="container">
+    <div class="testimonials-header">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-subtitle">Trusted by college students and organizations nationwide</p>
+    </div>
+
+    <div class="testimonials-carousel">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">{{ currentTestimonial.text }}</p>
+          <div class="rating">
+            <span *ngFor="let star of getStars(currentTestimonial.rating)" class="star">★</span>
+          </div>
+        </div>
+        <div class="testimonial-author">
+          <img [src]="currentTestimonial.image" [alt]="currentTestimonial.name" class="author-image">
+          <div class="author-info">
+            <h4 class="author-name">{{ currentTestimonial.name }}</h4>
+            <p class="author-role">{{ currentTestimonial.role }}</p>
+            <p class="author-college" *ngIf="currentTestimonial.college">{{ currentTestimonial.college }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn prev" (click)="prevTestimonial()" aria-label="Previous testimonial">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <div class="carousel-dots">
+          <button
+            *ngFor="let testimonial of testimonials; let i = index"
+            [class.active]="i === currentIndex"
+            (click)="goToTestimonial(i)"
+            class="dot"
+            [attr.aria-label]="'Go to testimonial ' + (i + 1)"
+          ></button>
+        </div>
+        <button class="carousel-btn next" (click)="nextTestimonial()" aria-label="Next testimonial">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-mini" *ngFor="let testimonial of testimonials; let i = index">
+        <div class="mini-content">
+          <div class="mini-rating">
+            <span *ngFor="let star of getStars(testimonial.rating)" class="star">★</span>
+          </div>
+          <p class="mini-text">{{ testimonial.text }}</p>
+          <div class="mini-author">
+            <img [src]="testimonial.image" [alt]="testimonial.name" class="mini-image">
+            <span class="mini-name">{{ testimonial.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

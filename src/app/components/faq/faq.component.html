@@ -1,0 +1,25 @@
+<section id="faq" class="faq section">
+  <div class="container">
+    <div class="faq-header">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Everything you need to know about ordering custom apparel</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item" *ngFor="let faq of faqs" [class.open]="isOpen(faq.id)">
+        <button class="faq-question" (click)="toggleItem(faq.id)">
+          <span class="question-text">{{ faq.question }}</span>
+          <span class="faq-icon" [class.rotated]="isOpen(faq.id)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

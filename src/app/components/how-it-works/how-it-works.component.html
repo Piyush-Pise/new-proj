@@ -1,0 +1,19 @@
+<section id="how-it-works" class="how-it-works section">
+  <div class="container">
+    <div class="how-it-works-header">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Simple, fast, and trustworthy</p>
+    </div>
+    <div class="steps-container">
+      <div class="step-card" *ngFor="let step of steps; let i = index" appScrollReveal>
+        <div class="step-number">{{ step.number }}</div>
+        <div class="step-content">
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="step-description">{{ step.description }}</p>
+        </div>
+        <div class="step-connector" *ngIf="i < steps.length - 1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+

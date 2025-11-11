@@ -1,0 +1,24 @@
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <div class="logo">
+        <h1>Frete</h1>
+      </div>
+      <ul class="nav-links" [class.active]="isMobileMenuOpen">
+        <li><a (click)="scrollToSection('home')" class="nav-link">Home</a></li>
+        <li><a (click)="scrollToSection('products')" class="nav-link">Products</a></li>
+        <li><a (click)="scrollToSection('features')" class="nav-link">Features</a></li>
+        <li><a (click)="scrollToSection('how-it-works')" class="nav-link">How It Works</a></li>
+        <li><a (click)="scrollToSection('portfolio')" class="nav-link">Portfolio</a></li>
+        <li><a (click)="scrollToSection('testimonials')" class="nav-link">Reviews</a></li>
+        <li><a (click)="scrollToSection('booking')" class="nav-link">Book a Fretor</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+

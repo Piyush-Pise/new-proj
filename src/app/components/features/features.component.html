@@ -1,0 +1,23 @@
+<section id="features" class="features section">
+  <div class="container">
+    <div class="features-header">
+      <h2 class="section-title">Why Choose Frete?</h2>
+      <p class="section-subtitle">Experience the difference of personalized service</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features">
+        <div class="feature-image-wrapper">
+          <img [src]="feature.image" [alt]="feature.title" loading="lazy" class="feature-image">
+          <div class="feature-icon-overlay">
+            <div class="feature-icon">{{ feature.icon }}</div>
+          </div>
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-description">{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,42 @@
+<section id="portfolio" class="portfolio section">
+  <div class="container">
+    <div class="portfolio-header">
+      <h2 class="section-title">Our Work</h2>
+      <p class="section-subtitle">See the quality and creativity we bring to every project</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item" *ngFor="let item of portfolioItems" (click)="openModal(item)">
+        <div class="portfolio-image-wrapper">
+          <img [src]="item.image" [alt]="item.title" loading="lazy" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3 class="overlay-title">{{ item.title }}</h3>
+              <p class="overlay-category">{{ item.category }}</p>
+              <div class="overlay-tags">
+                <span class="tag" *ngFor="let tag of item.tags">{{ tag }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="selectedItem" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeModal()" aria-label="Close modal">×</button>
+      <img [src]="selectedItem.image" [alt]="selectedItem.title" class="modal-image">
+      <div class="modal-info">
+        <h3 class="modal-title">{{ selectedItem.title }}</h3>
+        <p class="modal-category">{{ selectedItem.category }}</p>
+        <p class="modal-description">{{ selectedItem.description }}</p>
+        <div class="modal-tags">
+          <span class="tag" *ngFor="let tag of selectedItem.tags">{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

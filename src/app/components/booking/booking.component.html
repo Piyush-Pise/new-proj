@@ -1,0 +1,101 @@
+<section id="booking" class="booking section">
+  <div class="container">
+    <div class="booking-header">
+      <h2 class="section-title">Book a Fretor</h2>
+      <p class="section-subtitle">Get started with your custom apparel order today</p>
+    </div>
+    <div class="booking-form-container">
+      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="booking-form">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control"
+            [class.error]="f['name'].invalid && f['name'].touched"
+            placeholder="Enter your full name"
+          />
+          <div class="error-message" *ngIf="f['name'].invalid && f['name'].touched">
+            <span *ngIf="f['name'].errors?.['required']">Name is required</span>
+            <span *ngIf="f['name'].errors?.['minlength']">Name must be at least 2 characters</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            [class.error]="f['email'].invalid && f['email'].touched"
+            placeholder="your.email@example.com"
+          />
+          <div class="error-message" *ngIf="f['email'].invalid && f['email'].touched">
+            <span *ngIf="f['email'].errors?.['required']">Email is required</span>
+            <span *ngIf="f['email'].errors?.['email']">Please enter a valid email</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input
+            type="tel"
+            id="phone"
+            formControlName="phone"
+            class="form-control"
+            [class.error]="f['phone'].invalid && f['phone'].touched"
+            placeholder="+1 (555) 123-4567"
+          />
+          <div class="error-message" *ngIf="f['phone'].invalid && f['phone'].touched">
+            <span *ngIf="f['phone'].errors?.['required']">Phone number is required</span>
+            <span *ngIf="f['phone'].errors?.['pattern']">Please enter a valid phone number</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="productType">Product Type *</label>
+          <select
+            id="productType"
+            formControlName="productType"
+            class="form-control"
+            [class.error]="f['productType'].invalid && f['productType'].touched"
+          >
+            <option value="">Select a product type</option>
+            <option *ngFor="let type of productTypes" [value]="type">{{ type }}</option>
+          </select>
+          <div class="error-message" *ngIf="f['productType'].invalid && f['productType'].touched">
+            Please select a product type
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea
+            id="message"
+            formControlName="message"
+            class="form-control"
+            rows="5"
+            [class.error]="f['message'].invalid && f['message'].touched"
+            placeholder="Tell us about your custom apparel needs..."
+          ></textarea>
+          <div class="error-message" *ngIf="f['message'].invalid && f['message'].touched">
+            <span *ngIf="f['message'].errors?.['required']">Message is required</span>
+            <span *ngIf="f['message'].errors?.['minlength']">Message must be at least 10 characters</span>
+          </div>
+        </div>
+
+        <div class="form-message" *ngIf="submitMessage" [class.success]="submitSuccess" [class.error]="!submitSuccess">
+          {{ submitMessage }}
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
+          <span *ngIf="!isSubmitting">Submit Booking Request</span>
+          <span *ngIf="isSubmitting">Submitting...</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
